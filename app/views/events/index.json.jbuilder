@@ -5,6 +5,7 @@
     json.title event.title
     json.start event.start  
     json.end event.end 
+    json.url event_url(event.id)
    end
 
   #json.〇〇は送るデータの型

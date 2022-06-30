@@ -32,6 +32,7 @@ document.addEventListener('turbolinks:load', function() {
         }, 
         allDayText: '終日',
         height: "auto",
+        editable: true,
         
 
         dateClick: function(info){
@@ -77,16 +78,12 @@ document.addEventListener('turbolinks:load', function() {
         eventClassNames: function(arg){
             //表示されたイベントにclassをcss用に追加する(詳しくは次回の記事へ)
         },
-        eventDrop: function(event, delta, revertFunc, jsEvent, ui, view) {
-            // ドラッグ後の日付にデータ更新する
-            moveSchedule(event.id, event.start.format('YYYY-MM-DD'), event.end.format('YYYY-MM-DD'));
-        },
         eventDrop: function (info) {
             $.ajax({
               //POST通信
               type: "post",
               //ここでデータの送信先URLを指定します。
-              url: "/events/edit",
+              url: "/dropevents",
               dataType: "json", //データ形式を指定
               data: {
                 dropped_date: moment(info.event.start).format("YYYY-MM-DD"), //dropped_dateをキーにして値を送信
@@ -97,9 +94,6 @@ document.addEventListener('turbolinks:load', function() {
               calendar.render();
             });
           },
-        eventMouseEnter: function(event, jsEvent , view) {
-           jsEvent.preventDefault();
-        }
 
     });
     //カレンダー表示
