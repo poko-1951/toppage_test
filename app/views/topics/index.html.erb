@@ -1,5 +1,22 @@
+<table class="table mt-5">
+  <thead>
+    <tr>
+      <th>タイトル</th>
+      <th>内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @topics.each do |topic|%>
+      <tr>
+        <td><%= topic.title %></td>
+        <td><%= topic.content %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-info rounded-pill" data-toggle="modal" data-target="#exampleModal">
+<button type="button" class="btn btn-success rounded-pill" data-toggle="modal" data-target="#exampleModal">
   Model Button
 </button>
 
@@ -13,13 +30,20 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <%= form_with model:@topic, url: topics_path do |f| %>
       <div class="modal-body">
-        ...
+        
+          <%= f.label :title %>
+          <%= f.text_field :title %>
+          <%= f.label :content %>
+          <%= f.text_area :content %>
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <%= f.submit "登録"%>
       </div>
+      <% end %>
     </div>
   </div>
 </div>

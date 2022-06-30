@@ -929,7 +929,7 @@
     preact "^10.0.5"
     tslib "^2.1.0"
 
-"@fullcalendar/daygrid@^5.11.0":
+"@fullcalendar/daygrid@^5.11.0", "@fullcalendar/daygrid@~5.11.0":
   version "5.11.0"
   resolved "https://registry.yarnpkg.com/@fullcalendar/daygrid/-/daygrid-5.11.0.tgz#fd10391dfc2b6caa3538e0826f8d8f3e83e0e22a"
   integrity sha512-Ybh/dfHn/VL0qOVIRVyJc9I8oYiqqHl6xQONk8xXCe456QbPzAQLsAxpLLJLH+3smWNCfoQgvDKzR9e9XTzLMQ==
@@ -951,6 +951,15 @@
   integrity sha512-9XTI5+ydqrSX+IL3iWgKBURXfnPewn57Tmsv9mJZhiqrUEF7/+qtftLoKEAc8ZdWk/+01aBe67PFL16uPXj2Jg==
   dependencies:
     "@fullcalendar/common" "~5.11.0"
+    tslib "^2.1.0"
+
+"@fullcalendar/timegrid@^5.11.0":
+  version "5.11.0"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/timegrid/-/timegrid-5.11.0.tgz#b41153ef301f21f8c1e19a65023493c48c8bacf5"
+  integrity sha512-GNy+/PwAj510PS4Fu18Mf/CytNBVftFU7M8XwsUXOCJ6ouyroHZje0a7k5cH/nE5IQ6NJZfH2eAPBlxGath1MQ==
+  dependencies:
+    "@fullcalendar/common" "~5.11.0"
+    "@fullcalendar/daygrid" "~5.11.0"
     tslib "^2.1.0"
 
 "@gar/promisify@^1.0.1":
@@ -1034,7 +1043,7 @@
   dependencies:
     spark-md5 "^3.0.0"
 
-"@rails/ujs@^6.0.0":
+"@rails/ujs@^6.0.5":
   version "6.0.5"
   resolved "https://registry.yarnpkg.com/@rails/ujs/-/ujs-6.0.5.tgz#53e63a02271a7494a7925a30ed0a3672ec177337"
   integrity sha512-6nEyc+7jhVQGx84sO7yalQq1G+ZgJa72/5q9Avsm4yIZqVymvLEftK90+B0XZhvJzbiNnbDIFC4Wx5mgHo7lTw==
