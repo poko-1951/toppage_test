@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  
   root to: 'homes#top'
   get "/wiki" => "homes#wiki"
+  resources :topics
 
   resources :events
 
