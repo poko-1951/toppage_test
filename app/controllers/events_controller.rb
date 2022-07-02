@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   
   def new
     @event = Event.new
@@ -11,7 +12,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(params_event)
+    @event = Event.new(event_params)
     if @event.save
       respond_to do |format|
         format.html { redirect_to events_path } 
@@ -26,12 +27,17 @@ class EventsController < ApplicationController
   end
 
   def show
-    @topic = Event.find(params[:id])
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    # @event.update(start: params[:dropped_date], end: params[:end_date])
   end
 
   private
 
-  def params_event
+  def event_params
       params.require(:event).permit(:title, :start, :end)
   end
 end

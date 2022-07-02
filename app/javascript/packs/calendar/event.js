@@ -3,6 +3,7 @@ import { Calendar} from '@fullcalendar/core';
 import interactionPlugin from '@fullcalendar/interaction';
 import monthGridPlugin from '@fullcalendar/daygrid'
 import googleCalendarApi from '@fullcalendar/google-calendar'
+import moment from "moment"
 
 //<div id='calendar'></div>のidからオブジェクトを定義してカレンダーを作っていきます。
 document.addEventListener('turbolinks:load', function() {
@@ -81,12 +82,13 @@ document.addEventListener('turbolinks:load', function() {
         eventDrop: function (info) {
             $.ajax({
               //POST通信
-              type: "post",
+              type: "patch",
               //ここでデータの送信先URLを指定します。
-              url: "/dropevents",
-              dataType: "json", //データ形式を指定
+              url: "events/" + info.event.id,
+              dataType: "html", //データ形式を指定
               data: {
-                dropped_date: moment(info.event.start).format("YYYY-MM-DD"), //dropped_dateをキーにして値を送信
+                dropped_date: moment.utc(info.event.start).format("YYYY-MM-DDTHH:mm:ss"), //dropped_dateをキーにして値を送信
+                end_date: moment.utc(info.event.end).format("YYYY-MM-DDTHH:mm:ss"),
                 id: info.event.id, //idをキーにして値を送信
               },
             }).then((res) => {
