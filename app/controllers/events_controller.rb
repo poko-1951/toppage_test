@@ -35,6 +35,12 @@ class EventsController < ApplicationController
     # @event.update(start: params[:dropped_date], end: params[:end_date])
   end
 
+  def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    redirect_to events_path
+  end
+
   private
 
   def event_params
