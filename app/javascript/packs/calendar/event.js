@@ -85,7 +85,7 @@ document.addEventListener('turbolinks:load', function() {
               type: "patch",
               //ここでデータの送信先URLを指定します。
               url: "events/" + info.event.id,
-              dataType: "html", //データ形式を指定
+              dataType: "json", //データ形式を指定
               data: {
                 dropped_date: moment.utc(info.event.start).format("YYYY-MM-DDTHH:mm:ss"), //dropped_dateをキーにして値を送信
                 end_date: moment.utc(info.event.end).format("YYYY-MM-DDTHH:mm:ss"),
