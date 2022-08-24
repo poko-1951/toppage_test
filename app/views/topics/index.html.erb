@@ -1,0 +1,50 @@
+<table class="table mt-5">
+  <thead>
+    <tr>
+      <th>タイトル</th>
+      <th>内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @topics.each do |topic|%>
+      <tr>
+        <td><%= topic.title %></td>
+        <td><%= topic.content %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-success rounded-pill" data-toggle="modal" data-target="#exampleModal">
+  Model Button
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= form_with model:@topic, url: topics_path do |f| %>
+      <div class="modal-body">
+        
+          <%= f.label :title %>
+          <%= f.text_field :title %>
+          <%= f.label :content %>
+          <%= f.text_area :content %>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <%= f.submit "登録"%>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
